@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -8,8 +7,11 @@ import { useLanguage } from '@/contexts/LanguageContext';
 import { User, Users } from 'lucide-react';
 
 const Index = () => {
+  console.log("Index component rendering");
   const { language, setLanguage, t, isRTL } = useLanguage();
+  console.log("Language context loaded");
   const navigate = useNavigate();
+  console.log("Navigate hook loaded");
 
   return (
     <div className={`min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 ${isRTL ? 'font-arabic' : ''}`}>
