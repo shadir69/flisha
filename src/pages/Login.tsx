@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -13,6 +12,8 @@ import { ArrowLeft } from 'lucide-react';
 const Login = () => {
   const [searchParams] = useSearchParams();
   const role = (searchParams.get('role') as 'buyer' | 'seller') || 'buyer';
+  const redirectPath = searchParams.get('redirect') || (role === 'seller' ? '/seller-dashboard' : '/buyer-dashboard');
+  
   const [step, setStep] = useState<'phone' | 'otp'>('phone');
   const [phone, setPhone] = useState('');
   const [otp, setOtp] = useState('');
@@ -64,7 +65,7 @@ const Login = () => {
         title: "Success",
         description: "Login successful!"
       });
-      navigate(role === 'seller' ? '/seller-dashboard' : '/buyer-dashboard');
+      navigate(redirectPath);
     } else {
       toast({
         title: "Error", 

@@ -13,15 +13,18 @@ interface User {
 
 interface AuthContextType {
   user: User | null;
+  isGuest: boolean;
   login: (phone: string, otp: string, role: 'buyer' | 'seller') => Promise<boolean>;
   logout: () => void;
   isAuthenticated: boolean;
+  setGuestMode: (isGuest: boolean) => void;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [user, setUser] = useState<User | null>(null);
+  const [isGuest, setIsGuest] = useState(true);
 
   const login = async (phone: string, otp: string, role: 'buyer' | 'seller'): Promise<boolean> => {
     // Simulate OTP verification
@@ -36,6 +39,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         availableBalance: role === 'seller' ? 180 : undefined,
       };
       setUser(mockUser);
+      setIsGuest(false);
       return true;
     }
     return false;
@@ -43,12 +47,17 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
 
   const logout = () => {
     setUser(null);
+    setIsGuest(true);
   };
 
-  const isAuthenticated = user !== null;
+  const setGuestMode = (guestMode: boolean) => {
+    setIsGuest(guestMode);
+  };
+
+  const isAuthenticated = user !== null && !isGuest;
 
   return (
-    <AuthContext.Provider value={{ user, login, logout, isAuthenticated }}>
+    <AuthContext.Provider value={{ user, isGuest, login, logout, isAuthenticated, setGuestMode }}>
       {children}
     </AuthContext.Provider>
   );

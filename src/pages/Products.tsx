@@ -7,14 +7,20 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useAuth } from '@/contexts/AuthContext';
-import { Search, ArrowLeft, Package } from 'lucide-react';
+import GuestModeIndicator from '@/components/GuestModeIndicator';
+import LoginPromptModal from '@/components/LoginPromptModal';
+import { Search, ArrowLeft, Package, ShoppingCart } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
 
 const Products = () => {
   const { t, isRTL } = useLanguage();
-  const { user } = useAuth();
+  const { user, isAuthenticated } = useAuth();
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
+  const [showLoginModal, setShowLoginModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<string>('');
 
   // Mock products data
   const products = [
@@ -40,6 +46,29 @@ const Products = () => {
     return matchesSearch && matchesCategory;
   });
 
+  const handlePurchaseClick = (product: any) => {
+    if (!isAuthenticated) {
+      setSelectedProduct(product.name);
+      setShowLoginModal(true);
+      return;
+    }
+
+    if (product.price > (user?.flexyBalance || 0)) {
+      toast({
+        title: "Insufficient Balance",
+        description: "You don't have enough Flexy balance for this purchase.",
+        variant: "destructive"
+      });
+      return;
+    }
+
+    // Proceed with purchase logic
+    toast({
+      title: "Purchase Successful",
+      description: `You bought ${product.name} for ${product.price} DZD`
+    });
+  };
+
   return (
     <div className={`min-h-screen bg-gray-50 ${isRTL ? 'font-arabic' : ''}`}>
       {/* Header */}
@@ -55,11 +84,7 @@ const Products = () => {
             <h1 className="text-xl font-bold text-gray-800">FLISHA</h1>
           </div>
           
-          {user && (
-            <div className="flex items-center gap-2 bg-green-50 px-3 py-1 rounded-full">
-              <span className="text-green-700 font-medium">{user.flexyBalance} DZD</span>
-            </div>
-          )}
+          <GuestModeIndicator />
         </div>
       </header>
 
@@ -67,6 +92,13 @@ const Products = () => {
         <div className="mb-8">
           <h2 className="text-3xl font-bold text-gray-800 mb-2">{t('products')}</h2>
           <p className="text-gray-600">Discover amazing products from local sellers</p>
+          {!isAuthenticated && (
+            <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
+              <p className="text-blue-700 text-sm">
+                🛍️ You're browsing in Guest Mode. Login to make purchases and access your Flexy balance.
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Filters */}
@@ -106,30 +138,17 @@ const Products = () => {
                 </div>
                 <h4 className="font-semibold mb-2">{product.name}</h4>
                 <p className="text-sm text-gray-500 mb-2">by {product.seller}</p>
-                <div className="flex justify-between items-center">
+                <div className="flex justify-between items-center mb-3">
                   <span className="text-lg font-bold text-blue-600">{product.price} DZD</span>
                 </div>
-                <div className="mt-3 space-y-2">
-                  <Button 
-                    size="sm" 
-                    className="w-full"
-                    disabled={!user || product.price > (user.flexyBalance || 0)}
-                  >
-                    {!user ? 'Login to Buy' : 
-                     product.price > (user.flexyBalance || 0) ? 'Insufficient Balance' : 
-                     t('buyNow')}
-                  </Button>
-                  {!user && (
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      className="w-full"
-                      onClick={() => navigate('/login?role=buyer')}
-                    >
-                      Login as Buyer
-                    </Button>
-                  )}
-                </div>
+                <Button 
+                  size="sm" 
+                  className="w-full gap-2"
+                  onClick={() => handlePurchaseClick(product)}
+                >
+                  <ShoppingCart className="w-3 h-3" />
+                  {isAuthenticated ? t('buyNow') : 'Buy Now'}
+                </Button>
               </CardContent>
             </Card>
           ))}
@@ -143,6 +162,12 @@ const Products = () => {
           </div>
         )}
       </div>
+
+      <LoginPromptModal 
+        isOpen={showLoginModal}
+        onClose={() => setShowLoginModal(false)}
+        productName={selectedProduct}
+      />
     </div>
   );
 };

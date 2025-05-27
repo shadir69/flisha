@@ -5,13 +5,20 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { User, Users } from 'lucide-react';
+import { useAuth } from '@/contexts/AuthContext';
 
 const Index = () => {
   console.log("Index component rendering");
   const { language, setLanguage, t, isRTL } = useLanguage();
   console.log("Language context loaded");
   const navigate = useNavigate();
+  const { setGuestMode } = useAuth();
   console.log("Navigate hook loaded");
+
+  const handleBrowseAsGuest = () => {
+    setGuestMode(true);
+    navigate('/products');
+  };
 
   return (
     <div className={`min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 ${isRTL ? 'font-arabic' : ''}`}>
@@ -44,6 +51,21 @@ const Index = () => {
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             {t('platformDescription')}
+          </p>
+        </div>
+
+        {/* Browse as Guest Option */}
+        <div className="text-center mb-8">
+          <Button 
+            onClick={handleBrowseAsGuest}
+            variant="outline" 
+            size="lg"
+            className="gap-2 mb-4"
+          >
+            👁️ Browse Products as Guest
+          </Button>
+          <p className="text-sm text-gray-500">
+            No account needed - just browse! Login when you're ready to buy.
           </p>
         </div>
 
