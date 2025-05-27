@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
@@ -6,12 +5,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useAuth } from '@/contexts/AuthContext';
+import ProductForm from '@/components/ProductForm';
 import { Package, Wallet, User, LogOut } from 'lucide-react';
 
 const SellerDashboard = () => {
   const { t, isRTL } = useLanguage();
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const [showProductForm, setShowProductForm] = useState(false);
 
   const handleLogout = () => {
     logout();
@@ -103,7 +104,7 @@ const SellerDashboard = () => {
         {/* Main Content Tabs */}
         <Tabs defaultValue="products" className="space-y-6">
           <TabsList className="grid w-full grid-cols-4">
-            <TabsTrigger value="products">Products</TabsTrigger>
+            <TabsTrigger value="products">{t('products')}</TabsTrigger>
             <TabsTrigger value="orders">{t('orders')}</TabsTrigger>
             <TabsTrigger value="wallet">{t('wallet')}</TabsTrigger>
             <TabsTrigger value="settings">Settings</TabsTrigger>
@@ -112,7 +113,7 @@ const SellerDashboard = () => {
           <TabsContent value="products" className="space-y-6">
             <div className="flex justify-between items-center">
               <h3 className="text-xl font-semibold">Your Products</h3>
-              <Button>
+              <Button onClick={() => setShowProductForm(true)} className="bg-gradient-to-r from-green-600 to-red-600 hover:from-green-700 hover:to-red-700">
                 <Package className="w-4 h-4 mr-2" />
                 {t('addProduct')}
               </Button>
@@ -124,7 +125,9 @@ const SellerDashboard = () => {
                   <Package className="w-12 h-12 text-gray-400 mx-auto mb-4" />
                   <h4 className="text-lg font-medium text-gray-600 mb-2">No products yet</h4>
                   <p className="text-gray-500 mb-4">Start by adding your first product</p>
-                  <Button>Add Your First Product</Button>
+                  <Button onClick={() => setShowProductForm(true)} className="bg-gradient-to-r from-green-600 to-red-600 hover:from-green-700 hover:to-red-700">
+                    Add Your First Product
+                  </Button>
                 </div>
               </CardContent>
             </Card>
@@ -198,6 +201,10 @@ const SellerDashboard = () => {
           </TabsContent>
         </Tabs>
       </div>
+
+      {showProductForm && (
+        <ProductForm onClose={() => setShowProductForm(false)} />
+      )}
     </div>
   );
 };

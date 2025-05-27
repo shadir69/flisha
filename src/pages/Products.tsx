@@ -7,9 +7,8 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useAuth } from '@/contexts/AuthContext';
-import GuestModeIndicator from '@/components/GuestModeIndicator';
 import LoginPromptModal from '@/components/LoginPromptModal';
-import { Search, ArrowLeft, Package, ShoppingCart } from 'lucide-react';
+import { Search, Package, ShoppingCart } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
 const Products = () => {
@@ -47,7 +46,7 @@ const Products = () => {
   });
 
   const handlePurchaseClick = (e: React.MouseEvent, product: any) => {
-    e.stopPropagation(); // Prevent card click navigation
+    e.stopPropagation();
     
     if (!isAuthenticated) {
       setSelectedProduct(product.name);
@@ -57,50 +56,25 @@ const Products = () => {
 
     if (product.price > (user?.flexyBalance || 0)) {
       toast({
-        title: "Insufficient Balance",
+        title: t('insufficientBalance'),
         description: "You don't have enough Flexy balance for this purchase.",
         variant: "destructive"
       });
       return;
     }
 
-    // Proceed with purchase logic
     toast({
-      title: "Purchase Successful",
+      title: t('purchaseSuccessful'),
       description: `You bought ${product.name} for ${product.price} DZD`
     });
   };
 
   return (
     <div className={`min-h-screen bg-gray-50 ${isRTL ? 'font-arabic' : ''}`}>
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <Button variant="ghost" size="icon" onClick={() => navigate(-1)}>
-              <ArrowLeft className="w-4 h-4" />
-            </Button>
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold">F</span>
-            </div>
-            <h1 className="text-xl font-bold text-gray-800">FLISHA</h1>
-          </div>
-          
-          <GuestModeIndicator />
-        </div>
-      </header>
-
       <div className="container mx-auto px-6 py-8">
         <div className="mb-8">
           <h2 className="text-3xl font-bold text-gray-800 mb-2">{t('products')}</h2>
           <p className="text-gray-600">Discover amazing products from local sellers</p>
-          {!isAuthenticated && (
-            <div className="mt-4 p-4 bg-blue-50 border border-blue-200 rounded-lg">
-              <p className="text-blue-700 text-sm">
-                🛍️ You're browsing in Guest Mode. Login to make purchases and access your Flexy balance.
-              </p>
-            </div>
-          )}
         </div>
 
         {/* Filters */}
@@ -155,15 +129,15 @@ const Products = () => {
                 <h4 className="font-semibold mb-2">{product.name}</h4>
                 <p className="text-sm text-gray-500 mb-2">by {product.seller}</p>
                 <div className="flex justify-between items-center mb-3">
-                  <span className="text-lg font-bold text-blue-600">{product.price} DZD</span>
+                  <span className="text-lg font-bold text-green-600">{product.price} DZD</span>
                 </div>
                 <Button 
                   size="sm" 
-                  className="w-full gap-2"
+                  className="w-full gap-2 bg-gradient-to-r from-green-600 to-red-600 hover:from-green-700 hover:to-red-700"
                   onClick={(e) => handlePurchaseClick(e, product)}
                 >
                   <ShoppingCart className="w-3 h-3" />
-                  {isAuthenticated ? t('buyNow') : 'Buy Now'}
+                  {t('buyNow')}
                 </Button>
               </CardContent>
             </Card>

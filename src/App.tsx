@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { LanguageProvider } from "./contexts/LanguageContext";
 import { AuthProvider } from "./contexts/AuthContext";
+import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Index from "./pages/Index";
 import Login from "./pages/Login";
@@ -31,7 +32,8 @@ const App = () => {
             <Toaster />
             <Sonner />
             <BrowserRouter>
-              <div className="min-h-screen flex flex-col">
+              <div className="min-h-screen flex flex-col w-full">
+                <Header />
                 <Routes>
                   <Route path="/" element={<Index />} />
                   <Route path="/login" element={<Login />} />
