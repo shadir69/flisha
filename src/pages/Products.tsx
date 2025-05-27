@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useAuth } from '@/contexts/AuthContext';
 import LoginPromptModal from '@/components/LoginPromptModal';
+import CheckoutModal from '@/components/CheckoutModal';
 import { Search, Package, ShoppingCart } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 
@@ -19,7 +20,8 @@ const Products = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('all');
   const [showLoginModal, setShowLoginModal] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState<string>('');
+  const [showCheckoutModal, setShowCheckoutModal] = useState(false);
+  const [selectedProduct, setSelectedProduct] = useState<any>(null);
 
   // Mock products data
   const products = [
@@ -32,7 +34,7 @@ const Products = () => {
   ];
 
   const categories = [
-    { value: 'all', label: 'All Categories' },
+    { value: 'all', label: t('categories') },
     { value: 'electronics', label: 'Electronics' },
     { value: 'fashion', label: 'Fashion' },
     { value: 'home', label: 'Home & Garden' },
@@ -49,24 +51,13 @@ const Products = () => {
     e.stopPropagation();
     
     if (!isAuthenticated) {
-      setSelectedProduct(product.name);
+      setSelectedProduct(product);
       setShowLoginModal(true);
       return;
     }
 
-    if (product.price > (user?.flexyBalance || 0)) {
-      toast({
-        title: t('insufficientBalance'),
-        description: "You don't have enough Flexy balance for this purchase.",
-        variant: "destructive"
-      });
-      return;
-    }
-
-    toast({
-      title: t('purchaseSuccessful'),
-      description: `You bought ${product.name} for ${product.price} DZD`
-    });
+    setSelectedProduct(product);
+    setShowCheckoutModal(true);
   };
 
   return (
@@ -156,8 +147,16 @@ const Products = () => {
       <LoginPromptModal 
         isOpen={showLoginModal}
         onClose={() => setShowLoginModal(false)}
-        productName={selectedProduct}
+        productName={selectedProduct?.name || ''}
       />
+
+      {selectedProduct && (
+        <CheckoutModal
+          isOpen={showCheckoutModal}
+          onClose={() => setShowCheckoutModal(false)}
+          product={selectedProduct}
+        />
+      )}
     </div>
   );
 };

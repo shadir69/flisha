@@ -90,6 +90,31 @@ const translations = {
     view: 'عرض',
     browse: 'تصفح',
     
+    // Checkout & Forms
+    checkout: 'إتمام الشراء',
+    address: 'العنوان',
+    wilaya: 'الولاية',
+    name: 'الاسم',
+    confirmOrder: 'تأكيد الطلب',
+    
+    // Footer
+    quickLinks: 'روابط سريعة',
+    termsConditions: 'الشروط والأحكام',
+    privacyPolicy: 'سياسة الخصوصية',
+    socialMedia: 'وسائل التواصل الاجتماعي',
+    newsletter: 'النشرة الإخبارية',
+    subscribeNewsletter: 'اشترك في النشرة',
+    
+    // Dispute
+    openDispute: 'فتح نزاع',
+    disputeReason: 'سبب النزاع',
+    orderNotDelivered: 'لم يتم تسليم الطلب',
+    productDamaged: 'المنتج تالف',
+    notAsDescribed: 'لا يطابق الوصف',
+    wrongItem: 'منتج خاطئ',
+    qualityIssue: 'مشكلة في الجودة',
+    other: 'أخرى',
+    
     // Error messages
     insufficientBalance: 'رصيد غير كافي',
     loginRequired: 'يجب تسجيل الدخول',
@@ -98,7 +123,8 @@ const translations = {
     // Success messages
     purchaseSuccessful: 'تم الشراء بنجاح',
     messageSent: 'تم إرسال الرسالة',
-    productAdded: 'تم إضافة المنتج'
+    productAdded: 'تم إضافة المنتج',
+    orderConfirmed: 'تم تأكيد الطلب'
   },
   fr: {
     // Navigation
@@ -177,6 +203,31 @@ const translations = {
     view: 'Voir',
     browse: 'Parcourir',
     
+    // Checkout & Forms
+    checkout: 'Finaliser la commande',
+    address: 'Adresse',
+    wilaya: 'Wilaya',
+    name: 'Nom',
+    confirmOrder: 'Confirmer la commande',
+    
+    // Footer
+    quickLinks: 'Liens rapides',
+    termsConditions: 'Conditions générales',
+    privacyPolicy: 'Politique de confidentialité',
+    socialMedia: 'Réseaux sociaux',
+    newsletter: 'Newsletter',
+    subscribeNewsletter: 'S\'abonner à la newsletter',
+    
+    // Dispute
+    openDispute: 'Ouvrir un litige',
+    disputeReason: 'Raison du litige',
+    orderNotDelivered: 'Commande non livrée',
+    productDamaged: 'Produit endommagé',
+    notAsDescribed: 'Non conforme à la description',
+    wrongItem: 'Mauvais article',
+    qualityIssue: 'Problème de qualité',
+    other: 'Autre',
+    
     // Error messages
     insufficientBalance: 'Solde insuffisant',
     loginRequired: 'Connexion requise',
@@ -185,7 +236,8 @@ const translations = {
     // Success messages
     purchaseSuccessful: 'Achat réussi',
     messageSent: 'Message envoyé',
-    productAdded: 'Produit ajouté'
+    productAdded: 'Produit ajouté',
+    orderConfirmed: 'Commande confirmée'
   },
   en: {
     // Navigation
@@ -264,6 +316,31 @@ const translations = {
     view: 'View',
     browse: 'Browse',
     
+    // Checkout & Forms
+    checkout: 'Checkout',
+    address: 'Address',
+    wilaya: 'Wilaya',
+    name: 'Name',
+    confirmOrder: 'Confirm Order',
+    
+    // Footer
+    quickLinks: 'Quick Links',
+    termsConditions: 'Terms & Conditions',
+    privacyPolicy: 'Privacy Policy',
+    socialMedia: 'Social Media',
+    newsletter: 'Newsletter',
+    subscribeNewsletter: 'Subscribe to Newsletter',
+    
+    // Dispute
+    openDispute: 'Open Dispute',
+    disputeReason: 'Dispute Reason',
+    orderNotDelivered: 'Order not delivered',
+    productDamaged: 'Product damaged',
+    notAsDescribed: 'Not as described',
+    wrongItem: 'Wrong item',
+    qualityIssue: 'Quality issue',
+    other: 'Other',
+    
     // Error messages
     insufficientBalance: 'Insufficient Balance',
     loginRequired: 'Login Required',
@@ -272,7 +349,8 @@ const translations = {
     // Success messages
     purchaseSuccessful: 'Purchase Successful',
     messageSent: 'Message Sent',
-    productAdded: 'Product Added'
+    productAdded: 'Product Added',
+    orderConfirmed: 'Order Confirmed'
   }
 };
 
