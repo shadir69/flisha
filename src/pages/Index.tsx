@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { User, Users, ShoppingBag, Star, Clock, Shield, Headphones, CreditCard, Truck, Award } from 'lucide-react';
+import { User, Users, ShoppingBag, Star, Clock, Shield, Headphones, CreditCard, Truck, Award, ArrowRight, Zap } from 'lucide-react';
 import { useAuth } from '@/contexts/AuthContext';
 import RecentlyViewed from '@/components/RecentlyViewed';
 
@@ -140,41 +140,94 @@ const Index = () => {
           </div>
         </div>
 
-        {/* User Type Selection */}
-        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-16">
-          <Card className="hover:shadow-xl transition-shadow cursor-pointer group" onClick={() => navigate('/login?role=buyer')}>
-            <CardHeader className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-green-100 to-green-200 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:from-green-200 group-hover:to-green-300 transition-colors">
-                <User className="w-8 h-8 text-green-700" />
-              </div>
-              <CardTitle className="text-2xl">{t('buyer')}</CardTitle>
-              <CardDescription>
-                {t("flexybalancephrase")}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Button className="w-full bg-green-600 hover:bg-green-700">
-                {t('login')}  {t('buyer')}
-              </Button>
-            </CardContent>
-          </Card>
+        {/* Modern User Type Selection */}
+        <div className="mb-16">
+          <div className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-gray-800 mb-2">{t('joinFlisha')}</h2>
+            <p className="text-gray-600">{t('chooseAccountType')}</p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            {/* Buyer Card - Modern Design */}
+            <Card className="relative overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer border-0 bg-gradient-to-br from-green-50 to-emerald-100" 
+                  onClick={() => navigate('/login?role=buyer')}>
+              <div className="absolute inset-0 bg-gradient-to-br from-green-500/10 to-emerald-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <CardHeader className="relative z-10 text-center pb-8 pt-12">
+                <div className="relative mb-6">
+                  <div className="w-20 h-20 bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                    <User className="w-10 h-10 text-white" />
+                  </div>
+                  <div className="absolute -top-2 -right-2 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
+                    <Zap className="w-3 h-3 text-white" />
+                  </div>
+                </div>
+                <CardTitle className="text-3xl font-bold text-gray-800 mb-3">{t('buyer')}</CardTitle>
+                <CardDescription className="text-lg text-gray-600 leading-relaxed px-4">
+                  {t("flexybalancephrase")}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="relative z-10 px-8 pb-12">
+                <div className="space-y-3 mb-8">
+                  <div className="flex items-center gap-3 text-gray-700">
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <span className="text-sm">{t('browseThousandsProducts')}</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-gray-700">
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <span className="text-sm">{t('secureFlexPayments')}</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-gray-700">
+                    <div className="w-2 h-2 bg-green-500 rounded-full"></div>
+                    <span className="text-sm">{t('fastDelivery')}</span>
+                  </div>
+                </div>
+                <Button className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+                  {t('startShopping')}
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                </Button>
+              </CardContent>
+            </Card>
 
-          <Card className="hover:shadow-xl transition-shadow cursor-pointer group" onClick={() => navigate('/login?role=seller')}>
-            <CardHeader className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-red-100 to-red-200 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:from-red-200 group-hover:to-red-300 transition-colors">
-                <Users className="w-8 h-8 text-red-700" />
-              </div>
-              <CardTitle className="text-2xl">{t('seller')}</CardTitle>
-              <CardDescription>
-                {t("listmanage")}
-              </CardDescription>
-            </CardHeader>
-            <CardContent>
-              <Button className="w-full bg-red-600 hover:bg-red-700">
-                {t('login')}  {t('seller')}
-              </Button>
-            </CardContent>
-          </Card>
+            {/* Seller Card - Modern Design */}
+            <Card className="relative overflow-hidden group hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 cursor-pointer border-0 bg-gradient-to-br from-red-50 to-rose-100" 
+                  onClick={() => navigate('/login?role=seller')}>
+              <div className="absolute inset-0 bg-gradient-to-br from-red-500/10 to-rose-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <CardHeader className="relative z-10 text-center pb-8 pt-12">
+                <div className="relative mb-6">
+                  <div className="w-20 h-20 bg-gradient-to-br from-red-500 to-rose-600 rounded-2xl flex items-center justify-center mx-auto shadow-lg group-hover:shadow-xl transition-shadow duration-300">
+                    <Users className="w-10 h-10 text-white" />
+                  </div>
+                  <div className="absolute -top-2 -right-2 w-6 h-6 bg-orange-500 rounded-full flex items-center justify-center">
+                    <Star className="w-3 h-3 text-white" />
+                  </div>
+                </div>
+                <CardTitle className="text-3xl font-bold text-gray-800 mb-3">{t('seller')}</CardTitle>
+                <CardDescription className="text-lg text-gray-600 leading-relaxed px-4">
+                  {t("listmanage")}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="relative z-10 px-8 pb-12">
+                <div className="space-y-3 mb-8">
+                  <div className="flex items-center gap-3 text-gray-700">
+                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <span className="text-sm">{t('reachThousandsBuyers')}</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-gray-700">
+                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <span className="text-sm">{t('easyStoreManagement')}</span>
+                  </div>
+                  <div className="flex items-center gap-3 text-gray-700">
+                    <div className="w-2 h-2 bg-red-500 rounded-full"></div>
+                    <span className="text-sm">{t('instantPayments')}</span>
+                  </div>
+                </div>
+                <Button className="w-full bg-gradient-to-r from-red-600 to-rose-600 hover:from-red-700 hover:to-rose-700 text-white font-semibold py-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 group">
+                  {t('startSelling')}
+                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                </Button>
+              </CardContent>
+            </Card>
+          </div>
         </div>
 
         {/* Why Shop With Us Section */}
