@@ -1,4 +1,3 @@
-
 import React, { createContext, useContext, useState, useEffect } from 'react';
 
 type Language = 'ar' | 'fr' | 'en';
@@ -11,8 +10,6 @@ interface LanguageContextType {
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
-
-
 
 const translations = {
   ar: {
@@ -184,6 +181,54 @@ closed: "مغلق",
 
 
 
+    // Dispute page translations
+    reportIssueHelp: 'أبلغ عن مشكلة في طلبك وسنساعدك في حلها',
+    disputeDetails: 'تفاصيل النزاع',
+    orderId: 'رقم الطلب',
+    enterOrderId: 'أدخل رقم طلبك (مثال: ORD-123456)',
+    orderIdHelp: 'يمكنك العثور على رقم طلبك في سجل المشتريات أو رسالة التأكيد الإلكترونية',
+    selectDisputeReason: 'اختر سبب النزاع',
+    detailedDescription: 'وصف مفصل',
+    provideDetailedDescription: 'يرجى تقديم وصف مفصل للمشكلة...',
+    includeDetailHelp: 'قم بتضمين أكبر قدر من التفاصيل لمساعدتنا في حل مشكلتك بسرعة',
+    uploadPhotos: 'رفع الصور',
+    optional: 'اختياري',
+    uploadPhotosHelp: 'قم برفع صور للمنتجات التالفة أو غير الصحيحة',
+    chooseFiles: 'اختر الملفات',
+    filesSelected: 'ملف(ات) محددة',
+    whatHappensNext: 'ماذا سيحدث بعد ذلك؟',
+    reviewWithin24Hours: 'سيراجع فريقنا نزاعك خلال 24 ساعة',
+    emailConfirmation: 'ستتلقى رسالة تأكيد إلكترونية برقم النزاع',
+    mayContactForInfo: 'قد نتواصل معك أو مع البائع للحصول على معلومات إضافية',
+    resolution2to5Days: 'الحل عادة ما يستغرق 2-5 أيام عمل',
+    submitDispute: 'تقديم النزاع',
+    pleaseLoginToFileDispute: 'يرجى تسجيل الدخول لتقديم نزاع',
+    loginRequiredToFileDispute: 'تحتاج إلى تسجيل الدخول لتقديم نزاع',
+    loginToContinue: 'تسجيل الدخول للمتابعة',
+    disputeSubmitted: 'تم تقديم النزاع',
+    disputeSubmittedSuccess: 'تم تقديم نزاعك بنجاح. سيراجعه فريقنا خلال 24 ساعة.',
+    
+    // Product page additions
+    noProductsFound: 'لم يتم العثور على منتجات',
+    tryAdjustingFilters: 'جرب تعديل معايير البحث أو التصفية',
+    addedToWishlist: 'تمت الإضافة إلى قائمة الأمنيات',
+    customerReviews: 'تقييمات العملاء',
+    writeReview: 'اكتب تقييماً',
+    helpfulReview: 'هل كان هذا التقييم مفيداً؟',
+    verified: 'تم التحقق',
+    recentlyViewed: 'المنتجات المشاهدة مؤخراً',
+    whyShopWithUs: 'لماذا تتسوق معنا',
+    popularProducts: 'المنتجات الشائعة',
+    featuredCategories: 'الفئات المميزة',
+    flashSale: 'تخفيض سريع',
+    endsIn: 'ينتهي خلال',
+    trustedSeller: 'بائع موثوق',
+    loyaltyPoints: 'نقاط الولاء',
+    earnPoints: 'احصل على نقاط',
+    fastShipping: 'شحن سريع',
+    securePayment: 'دفع آمن',
+    supportTeam: 'فريق الدعم',
+    moneyBack: 'ضمان استرداد الأموال'
   },
   fr: {
     // Navigation
@@ -352,6 +397,54 @@ closed: "Fermé",
 
 
 
+    // Dispute page translations
+    reportIssueHelp: 'Signalez un problème avec votre commande et nous vous aiderons à le résoudre',
+    disputeDetails: 'Détails du litige',
+    orderId: 'ID de commande',
+    enterOrderId: 'Entrez votre ID de commande (ex: ORD-123456)',
+    orderIdHelp: 'Vous pouvez trouver votre ID de commande dans votre historique d\'achats ou email de confirmation',
+    selectDisputeReason: 'Sélectionnez la raison du litige',
+    detailedDescription: 'Description détaillée',
+    provideDetailedDescription: 'Veuillez fournir une description détaillée du problème...',
+    includeDetailHelp: 'Incluez autant de détails que possible pour nous aider à résoudre votre problème rapidement',
+    uploadPhotos: 'Télécharger des photos',
+    optional: 'optionnel',
+    uploadPhotosHelp: 'Téléchargez des photos d\'articles endommagés ou incorrects',
+    chooseFiles: 'Choisir les fichiers',
+    filesSelected: 'fichier(s) sélectionné(s)',
+    whatHappensNext: 'Que se passe-t-il ensuite ?',
+    reviewWithin24Hours: 'Notre équipe examinera votre litige dans les 24 heures',
+    emailConfirmation: 'Vous recevrez un email de confirmation avec votre ID de litige',
+    mayContactForInfo: 'Nous pourrons vous contacter ou contacter le vendeur pour des informations supplémentaires',
+    resolution2to5Days: 'La résolution prend généralement 2-5 jours ouvrables',
+    submitDispute: 'Soumettre le litige',
+    pleaseLoginToFileDispute: 'Veuillez vous connecter pour déposer un litige',
+    loginRequiredToFileDispute: 'Vous devez être connecté pour déposer un litige',
+    loginToContinue: 'Se connecter pour continuer',
+    disputeSubmitted: 'Litige soumis',
+    disputeSubmittedSuccess: 'Votre litige a été soumis avec succès. Notre équipe l\'examinera dans les 24 heures.',
+    
+    // Product page additions
+    noProductsFound: 'Aucun produit trouvé',
+    tryAdjustingFilters: 'Essayez d\'ajuster vos critères de recherche ou de filtre',
+    addedToWishlist: 'Ajouté à la liste de souhaits',
+    customerReviews: 'Avis clients',
+    writeReview: 'Écrire un avis',
+    helpfulReview: 'Cet avis était-il utile ?',
+    verified: 'Vérifié',
+    recentlyViewed: 'Récemment consultés',
+    whyShopWithUs: 'Pourquoi acheter chez nous',
+    popularProducts: 'Produits populaires',
+    featuredCategories: 'Catégories en vedette',
+    flashSale: 'Vente flash',
+    endsIn: 'Se termine dans',
+    trustedSeller: 'Vendeur de confiance',
+    loyaltyPoints: 'Points de fidélité',
+    earnPoints: 'Gagner des points',
+    fastShipping: 'Livraison rapide',
+    securePayment: 'Paiement sécurisé',
+    supportTeam: 'Équipe de support',
+    moneyBack: 'Garantie de remboursement'
   },
   en: {
     // Navigation
@@ -520,6 +613,54 @@ closed: "Fermé",
        sunday: "Sunday",
        closed: "Closed",
 
+    // Dispute page translations
+    reportIssueHelp: 'Report an issue with your order and we\'ll help resolve it',
+    disputeDetails: 'Dispute Details',
+    orderId: 'Order ID',
+    enterOrderId: 'Enter your order ID (e.g., ORD-123456)',
+    orderIdHelp: 'You can find your order ID in your purchase history or email confirmation',
+    selectDisputeReason: 'Select the reason for your dispute',
+    detailedDescription: 'Detailed Description',
+    provideDetailedDescription: 'Please provide a detailed description of the issue...',
+    includeDetailHelp: 'Include as much detail as possible to help us resolve your issue quickly',
+    uploadPhotos: 'Upload Photos',
+    optional: 'optional',
+    uploadPhotosHelp: 'Upload photos of damaged or incorrect items',
+    chooseFiles: 'Choose Files',
+    filesSelected: 'file(s) selected',
+    whatHappensNext: 'What happens next?',
+    reviewWithin24Hours: 'Our team will review your dispute within 24 hours',
+    emailConfirmation: 'You\'ll receive an email confirmation with your dispute ID',
+    mayContactForInfo: 'We may contact you or the seller for additional information',
+    resolution2to5Days: 'Resolution typically takes 2-5 business days',
+    submitDispute: 'Submit Dispute',
+    pleaseLoginToFileDispute: 'Please login to file a dispute',
+    loginRequiredToFileDispute: 'You need to be logged in to file a dispute',
+    loginToContinue: 'Login to Continue',
+    disputeSubmitted: 'Dispute Submitted',
+    disputeSubmittedSuccess: 'Your dispute has been submitted successfully. Our team will review it within 24 hours.',
+    
+    // Product page additions
+    noProductsFound: 'No products found',
+    tryAdjustingFilters: 'Try adjusting your search or filter criteria',
+    addedToWishlist: 'Added to wishlist',
+    customerReviews: 'Customer Reviews',
+    writeReview: 'Write a Review',
+    helpfulReview: 'Was this review helpful?',
+    verified: 'Verified',
+    recentlyViewed: 'Recently Viewed',
+    whyShopWithUs: 'Why Shop With Us',
+    popularProducts: 'Popular Products',
+    featuredCategories: 'Featured Categories',
+    flashSale: 'Flash Sale',
+    endsIn: 'Ends in',
+    trustedSeller: 'Trusted Seller',
+    loyaltyPoints: 'Loyalty Points',
+    earnPoints: 'Earn Points',
+    fastShipping: 'Fast Shipping',
+    securePayment: 'Secure Payment',
+    supportTeam: 'Support Team',
+    moneyBack: 'Money Back Guarantee'
   }
 };
 

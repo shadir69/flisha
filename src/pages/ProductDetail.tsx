@@ -6,7 +6,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { useAuth } from '@/contexts/AuthContext';
-import GuestModeIndicator from '@/components/GuestModeIndicator';
+import ProductReviews from '@/components/ProductReviews';
 import LoginPromptModal from '@/components/LoginPromptModal';
 import { ArrowLeft, ShoppingCart, Package, Star, Heart, Share2 } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
@@ -14,7 +14,7 @@ import { useToast } from '@/hooks/use-toast';
 const ProductDetail = () => {
   const { id } = useParams();
   const { t, isRTL } = useLanguage();
-  const { user, isAuthenticated } = useAuth();
+  const { user, isAuthenticated, addToRecentlyViewed } = useAuth();
   const navigate = useNavigate();
   const { toast } = useToast();
   const [showLoginModal, setShowLoginModal] = useState(false);
@@ -43,7 +43,8 @@ const ProductDetail = () => {
     ],
     inStock: 15,
     rating: 4.5,
-    reviews: 128
+    reviews: 128,
+    sellerTrusted: true
   };
 
   // Mock related products
@@ -53,6 +54,11 @@ const ProductDetail = () => {
     { id: 4, name: "Wireless Headphones", price: 12000, image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300" }
   ];
 
+  // Add to recently viewed when component mounts
+  React.useEffect(() => {
+    addToRecentlyViewed(product);
+  }, []);
+
   const handlePurchaseClick = () => {
     if (!isAuthenticated) {
       setShowLoginModal(true);
@@ -61,7 +67,7 @@ const ProductDetail = () => {
 
     if (product.price > (user?.flexyBalance || 0)) {
       toast({
-        title: "Insufficient Balance",
+        title: t('insufficientBalance'),
         description: "You don't have enough Flexy balance for this purchase.",
         variant: "destructive"
       });
@@ -69,15 +75,13 @@ const ProductDetail = () => {
     }
 
     toast({
-      title: "Purchase Successful",
+      title: t('purchaseSuccessful'),
       description: `You bought ${product.name} for ${product.price} DZD`
     });
   };
 
   return (
     <div className={`min-h-screen bg-gray-50 ${isRTL ? 'font-arabic' : ''}`}>
-    
-
       <div className="container mx-auto px-6 py-8">
         <div className="grid lg:grid-cols-2 gap-8 mb-12">
           {/* Product Images */}
@@ -109,7 +113,14 @@ const ProductDetail = () => {
             <div>
               <Badge variant="secondary" className="mb-2">{product.category}</Badge>
               <h1 className="text-3xl font-bold text-gray-800 mb-2">{product.name}</h1>
-              <p className="text-gray-600">by {product.seller}</p>
+              <div className="flex items-center gap-2">
+                <p className="text-gray-600">by {product.seller}</p>
+                {product.sellerTrusted && (
+                  <Badge className="bg-green-100 text-green-700">
+                    {t('trustedSeller')}
+                  </Badge>
+                )}
+              </div>
               
               <div className="flex items-center gap-2 mt-2">
                 <div className="flex items-center">
@@ -168,6 +179,11 @@ const ProductDetail = () => {
               </Button>
             </div>
           </div>
+        </div>
+
+        {/* Customer Reviews */}
+        <div className="mb-12">
+          <ProductReviews productId={product.id} />
         </div>
 
         {/* Related Products */}
