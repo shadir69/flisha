@@ -25,62 +25,24 @@ const BuyerDashboard = () => {
 
   // Mock products data
   const featuredProducts = [
-    {
-      id: 1,
-      name: "Samsung Galaxy A54",
-      price: 85000,
-      image: "/placeholder.svg",
-      seller: "Tech Store"
-    },
-    {
-      id: 2,
-      name: "iPhone 13",
-      price: 120000,
-      image: "/placeholder.svg", 
-      seller: "Mobile World"
-    },
-    {
-      id: 3,
-      name: "Laptop HP",
-      price: 95000,
-      image: "/placeholder.svg",
-      seller: "Computer Shop"
-    }
+    { id: 1, name: "Samsung Galaxy A54", price: 85000, category: "electronics", seller: "Tech Store", image: "https://images.unsplash.com/photo-1592750475338-74b7b21085ab?w=300" },
+    { id: 2, name: "iPhone 13", price: 120000, category: "electronics", seller: "Mobile World", image: "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300" },
+    { id: 3, name: "Laptop HP", price: 95000, category: "electronics", seller: "Computer Shop", image: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=300" },
+    { id: 4, name: "Nike Air Max", price: 15000, category: "fashion", seller: "Sports Zone", image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?w=300" },
+    { id: 5, name: "Coffee Maker", price: 8500, category: "home", seller: "Home Essentials", image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=300" },
+    { id: 6, name: "Wireless Headphones", price: 12000, category: "electronics", seller: "Audio Plus", image: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300" }
+
   ];
 
   return (
     <div className={`min-h-screen bg-gray-50 ${isRTL ? 'font-arabic' : ''}`}>
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold">F</span>
-            </div>
-            <h1 className="text-xl font-bold text-gray-800">FLISHA</h1>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2 bg-green-50 px-3 py-1 rounded-full">
-              <Wallet className="w-4 h-4 text-green-600" />
-              <span className="text-green-700 font-medium">{user.flexyBalance} DZD</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <User className="w-4 h-4 text-gray-600" />
-              <span className="text-gray-700">{user.name}</span>
-            </div>
-            <Button variant="outline" size="sm" onClick={handleLogout}>
-              <LogOut className="w-4 h-4 mr-2" />
-              Logout
-            </Button>
-          </div>
-        </div>
-      </header>
+   
+   
 
       <div className="container mx-auto px-6 py-8">
         <div className="mb-8">
-          <h2 className="text-3xl font-bold text-gray-800 mb-2">Welcome back, {user.name}!</h2>
-          <p className="text-gray-600">Discover amazing products and shop with your Flexy balance</p>
+          <h2 className="text-3xl font-bold text-gray-800 mb-2">{t("welcomeBack")} ,{user.name}</h2>
+          <p className="text-gray-600">{t("discoverShopFlexy")}</p>
         </div>
 
         {/* Search Bar */}
@@ -126,8 +88,17 @@ const BuyerDashboard = () => {
                   <Card key={product.id} className="hover:shadow-lg transition-shadow">
                     <CardContent className="p-4">
                       <div className="aspect-square bg-gray-100 rounded-lg mb-4 flex items-center justify-center">
-                        <Package className="w-12 h-12 text-gray-400" />
-                      </div>
+                      {product.image ? (
+                    <img 
+                      src={product.image} 
+                      alt={product.name}
+                      className="w-full h-full object-cover"
+                    />
+                  ) : (
+                    <div className="w-full h-full flex items-center justify-center">
+                      <Package className="w-12 h-12 text-gray-400" />
+                    </div>
+                  )}                      </div>
                       <h4 className="font-semibold mb-2">{product.name}</h4>
                       <p className="text-sm text-gray-500 mb-2">by {product.seller}</p>
                       <div className="flex justify-between items-center">

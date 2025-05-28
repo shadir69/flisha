@@ -26,28 +26,7 @@ const SellerDashboard = () => {
 
   return (
     <div className={`min-h-screen bg-gray-50 ${isRTL ? 'font-arabic' : ''}`}>
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold">F</span>
-            </div>
-            <h1 className="text-xl font-bold text-gray-800">FLISHA</h1>
-          </div>
-          
-          <div className="flex items-center gap-4">
-            <div className="flex items-center gap-2">
-              <User className="w-4 h-4 text-gray-600" />
-              <span className="text-gray-700">{user.name}</span>
-            </div>
-            <Button variant="outline" size="sm" onClick={handleLogout}>
-              <LogOut className="w-4 h-4 mr-2" />
-              Logout
-            </Button>
-          </div>
-        </div>
-      </header>
+    
 
       <div className="container mx-auto px-6 py-8">
         <div className="mb-8">
@@ -107,7 +86,7 @@ const SellerDashboard = () => {
             <TabsTrigger value="products">{t('products')}</TabsTrigger>
             <TabsTrigger value="orders">{t('orders')}</TabsTrigger>
             <TabsTrigger value="wallet">{t('wallet')}</TabsTrigger>
-            <TabsTrigger value="settings">Settings</TabsTrigger>
+            <TabsTrigger value="settings">{t('Settings')}</TabsTrigger>
           </TabsList>
 
           <TabsContent value="products" className="space-y-6">

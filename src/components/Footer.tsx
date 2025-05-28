@@ -48,13 +48,13 @@ const Footer = () => {
               {t('platformDescription')}
             </p>
             <div className="flex space-x-3">
-              <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white">
+              <Button variant="ghost" size="icon" className="text-gray-400 mx-3 hover:text-white hover:bg-slate-700">
                 <Facebook className="w-4 h-4" />
               </Button>
-              <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white">
+              <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white  hover:bg-slate-700">
                 <Twitter className="w-4 h-4" />
               </Button>
-              <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white">
+              <Button variant="ghost" size="icon" className="text-gray-400 hover:text-white  hover:bg-slate-700">
                 <Instagram className="w-4 h-4" />
               </Button>
             </div>

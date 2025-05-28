@@ -34,7 +34,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         name: role === 'buyer' ? 'Ahmed Mohamed' : 'Sarah Store',
         phone,
         role,
-        flexyBalance: role === 'buyer' ? 150 : undefined,
+        flexyBalance: role === 'buyer' ? 50000 : undefined,
         pendingBalance: role === 'seller' ? 250 : undefined,
         availableBalance: role === 'seller' ? 180 : undefined,
       };

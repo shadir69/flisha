@@ -51,7 +51,7 @@ const Index = () => {
             {t('browse')} {t('products')}
           </Button>
           <p className="text-sm text-gray-500">
-            Explore thousands of products from local sellers
+           {t("herophrase")}
           </p>
         </div>
 
@@ -64,12 +64,12 @@ const Index = () => {
               </div>
               <CardTitle className="text-2xl">{t('buyer')}</CardTitle>
               <CardDescription>
-                Browse and purchase products using your Flexy balance
+                {t("flexybalancephrase")}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <Button className="w-full bg-green-600 hover:bg-green-700">
-                {t('login')} as {t('buyer')}
+                {t('login')}  {t('buyer')}
               </Button>
             </CardContent>
           </Card>
@@ -81,41 +81,41 @@ const Index = () => {
               </div>
               <CardTitle className="text-2xl">{t('seller')}</CardTitle>
               <CardDescription>
-                List your products and manage your store
+                {t("listmanage")}
               </CardDescription>
             </CardHeader>
             <CardContent>
               <Button className="w-full bg-red-600 hover:bg-red-700">
-                {t('login')} as {t('seller')}
+                {t('login')}  {t('seller')}
               </Button>
             </CardContent>
           </Card>
         </div>
 
         {/* Features Section */}
-        <div className="mt-16 grid md:grid-cols-3 gap-8">
-          <div className="text-center">
+        <div className=" grid md:grid-cols-3 gap-8 my-20 ">
+          <div className="text-center shadow-md shadow-grey-300 rounded-md p-5">
             <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center mx-auto mb-4">
               <span className="text-green-600 font-bold text-2xl">💳</span>
             </div>
-            <h3 className="text-lg font-semibold mb-2">Flexy Payments Only</h3>
-            <p className="text-gray-600">Pay using your mobile credit balance securely</p>
+            <h3 className="text-lg font-semibold mb-2">{t("flexyOnly")}</h3>
+            <p className="text-gray-600">{t("flexyDescription")}</p>
           </div>
           
-          <div className="text-center">
+          <div className="text-center shadow-md shadow-grey-300 rounded-md p-5">
             <div className="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center mx-auto mb-4">
               <span className="text-red-600 font-bold text-2xl">🌍</span>
             </div>
-            <h3 className="text-lg font-semibold mb-2">Multilingual</h3>
-            <p className="text-gray-600">Available in Arabic, French, and English</p>
+            <h3 className="text-lg font-semibold mb-2">{t("multilingual")}</h3>
+            <p className="text-gray-600">{t("languagesAvailable")}</p>
           </div>
           
-          <div className="text-center">
-            <div className="w-12 h-12 bg-gray-100 rounded-lg flex items-center justify-center mx-auto mb-4">
+          <div className="text-center shadow-md shadow-grey-300 rounded-md p-5 ">
+            <div className="w-12 h-12 bg-gray-200 rounded-lg flex items-center justify-center mx-auto mb-4">
               <span className="text-gray-600 font-bold text-2xl">🔒</span>
             </div>
-            <h3 className="text-lg font-semibold mb-2">Secure Transactions</h3>
-            <p className="text-gray-600">Safe and reliable payment processing</p>
+            <h3 className="text-lg font-semibold mb-2">{t("secureTransactions")}</h3>
+            <p className="text-gray-600">{t("secureDescription")}</p>
           </div>
         </div>
       </main>

@@ -12,9 +12,13 @@ interface LanguageContextType {
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
+
+
 const translations = {
   ar: {
     // Navigation
+    herophrase: 'استكشف آلاف المنتجات من البائعين المحليين',
+     listmanage: 'أضف منتجاتك وادِر متجرك',
     home: 'الرئيسية',
     shop: 'التسوق',
     products: 'المنتجات',
@@ -69,6 +73,7 @@ const translations = {
     withdraw: 'سحب',
     orders: 'الطلبات',
     wallet: 'المحفظة',
+    Settings:'الاعدادات',
     
     // Contact & About
     contactUs: 'اتصل بنا',
@@ -124,10 +129,65 @@ const translations = {
     purchaseSuccessful: 'تم الشراء بنجاح',
     messageSent: 'تم إرسال الرسالة',
     productAdded: 'تم إضافة المنتج',
-    orderConfirmed: 'تم تأكيد الطلب'
+    orderConfirmed: 'تم تأكيد الطلب',
+
+    flexybalancephrase: 'تصفح واشترِ المنتجات باستخدام رصيدك في فليكسي',
+    flexyOnly: "الدفع عبر فليكسي فقط",
+    flexyDescription: "ادفع باستخدام رصيد هاتفك المحمول بأمان",
+    multilingual: "متعدد اللغات",
+    languagesAvailable: "متوفر باللغات العربية والفرنسية والإنجليزية",
+    secureTransactions: "معاملات آمنة",
+    secureDescription: "معالجة دفع آمنة وموثوقة",
+    discoverShopFlexy: "اكتشف منتجات رائعة وتسوق باستخدام رصيد فليكسي الخاص بك",
+    welcomeBack: "مرحبًا بعودتك",
+    discoverLocalProducts: "اكتشف منتجات رائعة من البائعين المحليين",
+    aboutTitle: "حول فليشـا",
+aboutIntro: "نُحدث ثورة في التجارة الإلكترونية في الجزائر من خلال تمكين الشراء عبر رصيد الهاتف",
+
+ourMissionTitle: "مهمتنا",
+ourMissionText: "نهدف إلى دمقرطة التجارة الإلكترونية من خلال جعل التسوق عبر الإنترنت متاحًا للجميع في الجزائر، بغض النظر عن وجود حساب بنكي، وذلك عبر حلول مبتكرة للدفع برصيد الهاتف.",
+
+ourVisionTitle: "رؤيتنا",
+ourVisionText: "أن نصبح السوق الرائد في الجزائر عبر الهواتف المحمولة، مع تمكين الأعمال المحلية وخلق فرص للجميع للمشاركة في الاقتصاد الرقمي.",
+
+howItWorksTitle: "كيف تعمل فليشـا؟",
+step1Title: "تصفح وتسوق",
+step1Text: "استكشف آلاف المنتجات من بائعين محليين موثوقين في جميع أنحاء الجزائر",
+step2Title: "ادفع برصيد فليكسي",
+step2Text: "استخدم رصيد هاتفك لشراء المنتجات - دون الحاجة إلى بطاقة بنكية",
+step3Title: "توصيل آمن",
+step3Text: "استلم طلبك وأكد التوصيل لتحويل الدفع للبائع",
+
+whyChooseTitle: "لماذا تختار فليشـا؟",
+
+trustTitle: "نُبنى على الثقة",
+trustText: "فليشـا مصممة لحماية المشتري والبائع على حد سواء. نظام الضمان الخاص بنا يضمن أن المدفوعات آمنة، وآلية حل النزاعات تحمي جميع الأطراف. نتحقق من جميع البائعين ونراقب المعاملات لضمان سوق آمن للجميع.",
+getInTouch: "اتصل بنا",
+contactTitle: "اتصل بنا",
+contactIntro: "تواصل مع فريقنا. نحن هنا لمساعدتك!",
+
+namePlaceholder: "أدخل اسمك الكامل",
+
+emailPlaceholder: "أدخل بريدك الإلكتروني",
+phone: "رقم الهاتف",
+phonePlaceholder: "أدخل رقم هاتفك",
+
+messagePlaceholder: "كيف يمكننا مساعدتك؟",
+sendButton: "إرسال الرسالة",
+
+businessHours: "ساعات العمل",
+mondayFriday: "الإثنين - الجمعة",
+saturday: "السبت",
+sunday: "الأحد",
+closed: "مغلق",
+
+
+
+
   },
   fr: {
     // Navigation
+    herophrase: 'Découvrez des milliers de produits auprès de vendeurs locaux',
     home: 'Accueil',
     shop: 'Boutique',
     products: 'Produits',
@@ -182,6 +242,7 @@ const translations = {
     withdraw: 'Retirer',
     orders: 'Commandes',
     wallet: 'Portefeuille',
+    Settings:'Settings',
     
     // Contact & About
     contactUs: 'Nous contacter',
@@ -237,10 +298,64 @@ const translations = {
     purchaseSuccessful: 'Achat réussi',
     messageSent: 'Message envoyé',
     productAdded: 'Produit ajouté',
-    orderConfirmed: 'Commande confirmée'
+    orderConfirmed: 'Commande confirmée',
+
+     listmanage: 'Ajoutez vos produits et gérez votre boutique',
+     flexybalancephrase: 'Parcourez et achetez des produits en utilisant votre solde Flexy',
+     flexyOnly: "Paiements uniquement via Flexy",
+     flexyDescription: "Payez en toute sécurité avec votre crédit mobile",
+     multilingual: "Multilingue",
+     languagesAvailable: "Disponible en arabe, français et anglais",
+     secureTransactions: "Transactions sécurisées",
+     secureDescription: "Traitement de paiement sûr et fiable",
+     discoverShopFlexy: "Découvrez des produits incroyables et achetez avec votre solde Flexy",
+      welcomeBack: "Bon retour",
+      discoverLocalProducts: "Découvrez des produits incroyables de vendeurs locaux",
+      aboutTitle: "À propos de FLISHA",
+aboutIntro: "Révolutionner le e-commerce en Algérie en permettant les achats avec le crédit mobile",
+
+ourMissionTitle: "Notre mission",
+ourMissionText: "Démocratiser le commerce en ligne en le rendant accessible à tous en Algérie, quel que soit le statut bancaire, grâce à des solutions innovantes de paiement via crédit mobile.",
+
+ourVisionTitle: "Notre vision",
+ourVisionText: "Devenir la première marketplace mobile-first en Algérie, en soutenant les entreprises locales et en créant des opportunités pour tous de participer à l’économie numérique.",
+
+howItWorksTitle: "Comment fonctionne FLISHA",
+step1Title: "Parcourez et achetez",
+step1Text: "Explorez des milliers de produits auprès de vendeurs locaux vérifiés à travers l’Algérie",
+step2Title: "Payez avec Flexy",
+step2Text: "Utilisez votre solde de crédit mobile pour acheter - sans carte bancaire",
+step3Title: "Livraison sécurisée",
+step3Text: "Recevez vos articles et confirmez la livraison pour libérer le paiement au vendeur",
+
+whyChooseTitle: "Pourquoi choisir FLISHA ?",
+
+trustTitle: "Basé sur la confiance",
+trustText: "FLISHA est conçue avec la protection des acheteurs et des vendeurs au cœur de son fonctionnement. Notre système d’escrow garantit des paiements sécurisés, et notre processus de résolution des litiges protège les deux parties. Tous les vendeurs sont vérifiés et les transactions sont surveillées pour assurer un marché sûr.",
+getInTouch: "Contactez-nous",
+contactTitle: "Contactez-nous",
+contactIntro: "Contactez notre équipe. Nous sommes là pour vous aider !",
+namePlaceholder: "Entrez votre nom complet",
+emailPlaceholder: "Entrez votre adresse email",
+phone: "Numéro de téléphone",
+phonePlaceholder: "Entrez votre numéro de téléphone",
+
+messagePlaceholder: "Comment pouvons-nous vous aider ?",
+sendButton: "Envoyer le message",
+
+businessHours: "Horaires d'ouverture",
+mondayFriday: "Lundi - Vendredi",
+saturday: "Samedi",
+sunday: "Dimanche",
+closed: "Fermé",
+
+
+
+
   },
   en: {
     // Navigation
+    herophrase: 'Explore thousands of products from local sellers',
     home: 'Home',
     shop: 'Shop',
     products: 'Products',
@@ -295,6 +410,7 @@ const translations = {
     withdraw: 'Withdraw',
     orders: 'Orders',
     wallet: 'Wallet',
+    Settings:'Settings',
     
     // Contact & About
     contactUs: 'Contact Us',
@@ -350,7 +466,60 @@ const translations = {
     purchaseSuccessful: 'Purchase Successful',
     messageSent: 'Message Sent',
     productAdded: 'Product Added',
-    orderConfirmed: 'Order Confirmed'
+    orderConfirmed: 'Order Confirmed',
+
+      listmanage: 'List your products and manage your store',
+       flexybalancephrase: 'Browse and purchase products using your Flexy balance',
+       flexyOnly: "Flexy Payments Only",
+       flexyDescription: "Pay using your mobile credit balance securely",
+       multilingual: "Multilingual",
+       languagesAvailable: "Available in Arabic, French, and English",
+       secureTransactions: "Secure Transactions",
+       secureDescription: "Safe and reliable payment processing",
+
+       discoverShopFlexy: "Discover amazing products and shop with your Flexy balance",
+       welcomeBack: "Welcome back",
+       discoverLocalProducts: "Discover amazing products from local sellers",
+
+       aboutTitle: "About FLISHA",
+       aboutIntro: "Revolutionizing e-commerce in Algeria by enabling purchases with mobile credit",
+     
+       ourMissionTitle: "Our Mission",
+       ourMissionText: "To democratize e-commerce by making online shopping accessible to everyone in Algeria, regardless of banking status, through innovative mobile credit payment solutions.",
+     
+       ourVisionTitle: "Our Vision",
+       ourVisionText: "To become Algeria's leading mobile-first marketplace, empowering local businesses and creating opportunities for everyone to participate in the digital economy.",
+     
+       howItWorksTitle: "How FLISHA Works",
+       step1Title: "Browse & Shop",
+       step1Text: "Explore thousands of products from verified local sellers across Algeria",
+       step2Title: "Pay with Flexy",
+       step2Text: "Use your mobile credit balance to purchase items - no bank card needed",
+       step3Title: "Secure Delivery",
+       step3Text: "Receive your items and confirm delivery to release payment to the seller",
+     
+       whyChooseTitle: "Why Choose FLISHA?",
+     
+       trustTitle: "Built on Trust",
+       trustText: "FLISHA is designed with buyer and seller protection at its core. Our escrow system ensures that payments are secure, and our dispute resolution process protects both parties. We verify all sellers and monitor transactions to maintain a safe marketplace for everyone.",
+       getInTouch: "Get in Touch",
+       contactTitle: "Contact Us",
+       contactIntro: "Get in touch with our team. We're here to help!",
+      
+       namePlaceholder: "Enter your full name",
+      
+       emailPlaceholder: "Enter your email address",
+       phone: "Phone Number",
+       phonePlaceholder: "Enter your phone number",
+    
+       messagePlaceholder: "How can we help you?",
+       sendButton: "Send Message",
+       businessHours: "Business Hours",
+       mondayFriday: "Monday - Friday",
+       saturday: "Saturday",
+       sunday: "Sunday",
+       closed: "Closed",
+
   }
 };
 

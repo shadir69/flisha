@@ -76,21 +76,7 @@ const ProductDetail = () => {
 
   return (
     <div className={`min-h-screen bg-gray-50 ${isRTL ? 'font-arabic' : ''}`}>
-      {/* Header */}
-      <header className="bg-white shadow-sm border-b">
-        <div className="container mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-3">
-            <Button variant="ghost" size="icon" onClick={() => navigate(-1)}>
-              <ArrowLeft className="w-4 h-4" />
-            </Button>
-            <div className="w-8 h-8 bg-gradient-to-r from-blue-600 to-purple-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold">F</span>
-            </div>
-            <h1 className="text-xl font-bold text-gray-800">FLISHA</h1>
-          </div>
-          <GuestModeIndicator />
-        </div>
-      </header>
+    
 
       <div className="container mx-auto px-6 py-8">
         <div className="grid lg:grid-cols-2 gap-8 mb-12">
